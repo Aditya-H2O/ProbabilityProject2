@@ -1,3 +1,4 @@
+package ProbabilityProject2;
 import java.util.Random;
 import java.math.*;
 
