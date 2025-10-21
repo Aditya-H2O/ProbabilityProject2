@@ -4,6 +4,9 @@ import java.util.Random;
  class Main{
     public static void main(String[] args)
     {
+        System.out.println("Time With Agent: "  + getTimeWithAgent()); 
+        System.out.println("Number of Attempts: " + getIntendedAttempts()); 
+        System.out.println("Exponential: " + generateExponential(0.01)); 
         System.out.println(call());
     }
 
@@ -90,7 +93,7 @@ import java.util.Random;
     public static double generateExponential(double lambda) {
         Random random = new Random();
         double u = random.nextDouble(); 
-        return -Math.log(u) / lambda;
+        return -Math.log(1-u) / lambda;
     }
 
     public static double getTimeWithAgent() {
