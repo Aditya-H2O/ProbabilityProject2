@@ -1,7 +1,5 @@
 package ProbabilityProject2;
 import java.util.Random;
-import java.math.*;
-
  
  class Main{
     public static void main(String[] args)
@@ -100,7 +98,7 @@ import java.math.*;
         double u = random.nextDouble(); 
         double c = 0.0731237647787; 
         
-        double x = Math.pow(((u / (2c)) +  Math.sqrt(10)), 2); 
+        double x = Math.pow(((u / (2*c)) +  Math.sqrt(10)), 2); 
 
         return x; 
     }    
