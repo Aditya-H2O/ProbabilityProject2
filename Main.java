@@ -1,13 +1,44 @@
 package ProbabilityProject2;
+import java.util.*; 
 import java.util.Random;
+import java.util.ArrayList; 
  
  class Main{
     public static void main(String[] args)
     {
-        System.out.println("Time With Agent: "  + getTimeWithAgent()); 
-        System.out.println("Number of Attempts: " + getIntendedAttempts()); 
-        System.out.println("Exponential: " + generateExponential(0.01)); 
         System.out.println(call());
+
+        final int NumberOfWValues = 1000; 
+
+        ArrayList<Double> WValues = new ArrayList<>();
+        for (int i = 0; i < NumberOfWValues; i++)
+        {
+            WValues.add(call()); 
+        }
+
+        Collections.sort(WValues); 
+
+        System.out.println("Average W Value: " + getMean(WValues)); 
+
+        double median = (WValues.get(NumberOfWValues/2) + WValues.get((NumberOfWValues/2) - 1 )) / 2; 
+
+        System.out.println("Median W Value: " + median); 
+
+        System.out.println("W Values: " + WValues.toString()); 
+
+        
+
+    }
+
+    private static double getMean(ArrayList<Double> array)
+    {
+        int sum = 0; 
+        for (int i = 0; i < array.size(); i++)
+        {
+            sum += array.get(i); 
+        }
+        
+        return sum/array.size(); 
     }
 
 
