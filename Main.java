@@ -4,7 +4,12 @@ import java.util.Random;
 import java.util.ArrayList; 
  
  class Main{
-    public static void main(String[] args)
+
+     public static int ticketCount = 0;
+     public static int noTicketCount = 0;
+     private static final Random random = new Random();
+
+     public static void main(String[] args)
     {
         System.out.println(call());
 
@@ -22,7 +27,9 @@ import java.util.ArrayList;
 
         double median = (WValues.get(NumberOfWValues/2) + WValues.get((NumberOfWValues/2) - 1 )) / 2; 
 
-        System.out.println("Median W Value: " + median); 
+        System.out.println("Median W Value: " + median);
+
+        System.out.println("Probability of Ticket: " + (double)ticketCount/(ticketCount + noTicketCount));
 
         System.out.println("W Values: " + WValues.toString()); 
 
@@ -32,7 +39,7 @@ import java.util.ArrayList;
 
     private static double getMean(ArrayList<Double> array)
     {
-        int sum = 0; 
+        double sum = 0.0;
         for (int i = 0; i < array.size(); i++)
         {
             sum += array.get(i); 
@@ -44,7 +51,6 @@ import java.util.ArrayList;
 
     public static double call()
     {
-        Random random = new Random(); 
         
         boolean doneCalling = false; 
 
@@ -67,7 +73,8 @@ import java.util.ArrayList;
             {
                 timeSpent += getTimeWithAgent(); 
                 timeSpent += 2; 
-                doneCalling = true; 
+                doneCalling = true;
+                ticketCount++;
                 return timeSpent; 
             }
             
@@ -82,14 +89,15 @@ import java.util.ArrayList;
                     timeSpent += exponential;
                     timeSpent += getTimeWithAgent(); 
                     timeSpent += 2; 
-                    doneCalling = true; 
+                    doneCalling = true;
+                    ticketCount++;
                     return timeSpent; 
                 }
                 //Don't Find Agent 
                 else 
                 {
                     timeSpent +=120; 
-                    timeSpent+=2; 
+                    timeSpent+=2;
                     doneCalling = false; 
                     N--; 
                 }
@@ -97,6 +105,7 @@ import java.util.ArrayList;
             
         }        
 
+        noTicketCount++;
         return timeSpent; 
     }
     
